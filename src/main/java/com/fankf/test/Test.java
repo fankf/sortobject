@@ -11,7 +11,7 @@ import java.util.List;
 public class Test {
     public static void main(String[] args) {
 
-        SortObjectList init = SortObjectList.init();
+        SortObjectList init = SortObjectList.instance();
         User user1 = new User(1,"A1","14");
         User user2 = new User(2,"A2","11");
         User user3 = new User(3,"A3","11");

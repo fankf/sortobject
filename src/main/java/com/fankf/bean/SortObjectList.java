@@ -2,7 +2,7 @@ package com.fankf.bean;
 
 import com.fankf.enums.ArithmeticEnum;
 
-import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SortObjectList {
@@ -21,14 +21,14 @@ public class SortObjectList {
     /*
      * 排序对象组
      */
-    private SortObject[] objects;
+    private List<SortObject> objects;
 
     private SortObjectList() {
     }
 
     private static SortObjectList sortObjects;
 
-    public static SortObjectList init() {
+    public static SortObjectList instance() {
         sortObjects = new SortObjectList();
         sortObjects.asc = false;
         sortObjects.method = ArithmeticEnum.BubbleSort;
@@ -51,19 +51,20 @@ public class SortObjectList {
         this.method = method;
     }
 
-    public SortObject[] getObjects() {
+    public List<SortObject> getObjects() {
         return objects;
     }
 
-    public void setObjects(SortObject[] objects) {
+    public void setObjects(List<SortObject> objects) {
         this.objects = objects;
     }
 
-    public void setObjects(List<SortObject> objects) {
-        SortObject[] sortObjects = new SortObject[objects.size()];
-        for (int i = 0; i < objects.size(); i++) {
-            sortObjects[i] = objects.get(i);
+    public void plusObjects(SortObject object) {
+        synchronized (this) {
+            if (objects == null) {
+                objects = new ArrayList<>();
+            }
         }
-        this.objects = sortObjects;
+        objects.add(object);
     }
 }

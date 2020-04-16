@@ -10,8 +10,12 @@ public class Bubble implements Arithmetic {
     @Override
     public void sort(SortObject[] objects, boolean asc) throws NumberFormatException {
         int k = 0;
-        for (int i = 0; i < objects.length; i++) {
+        if (objects.length == 1) {
+            return;
+        }
+        for (int i = 0; i < objects.length ; i++) {
             for (int j = 0; j < objects.length - 1; j++) {
+                // 排序字段为空或者转换异常，会报错
                 Double sortFiled1 = Double.valueOf(objects[j].getSortFiled());
                 Double sortFiled2 = Double.valueOf(objects[j + 1].getSortFiled());
                 if (asc) {
