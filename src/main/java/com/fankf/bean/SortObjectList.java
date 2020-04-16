@@ -1,13 +1,10 @@
 package com.fankf.bean;
 
 import com.fankf.enums.ArithmeticEnum;
-import lombok.Getter;
-import lombok.Setter;
 
+import java.util.Iterator;
 import java.util.List;
 
-@Setter
-@Getter
 public class SortObjectList {
     /*
      * 是否是顺序排列
@@ -24,16 +21,49 @@ public class SortObjectList {
     /*
      * 排序对象组
      */
-    private List<SortObject> objects;
+    private SortObject[] objects;
 
-    private SortObjectList(){}
+    private SortObjectList() {
+    }
 
     private static SortObjectList sortObjects;
 
-    public static SortObjectList init(){
+    public static SortObjectList init() {
         sortObjects = new SortObjectList();
         sortObjects.asc = false;
         sortObjects.method = ArithmeticEnum.BubbleSort;
         return sortObjects;
+    }
+
+    public boolean isAsc() {
+        return asc;
+    }
+
+    public void setAsc(boolean asc) {
+        this.asc = asc;
+    }
+
+    public ArithmeticEnum getMethod() {
+        return method;
+    }
+
+    public void setMethod(ArithmeticEnum method) {
+        this.method = method;
+    }
+
+    public SortObject[] getObjects() {
+        return objects;
+    }
+
+    public void setObjects(SortObject[] objects) {
+        this.objects = objects;
+    }
+
+    public void setObjects(List<SortObject> objects) {
+        SortObject[] sortObjects = new SortObject[objects.size()];
+        for (int i = 0; i < objects.size(); i++) {
+            sortObjects[i] = objects.get(i);
+        }
+        this.objects = sortObjects;
     }
 }

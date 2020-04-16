@@ -1,18 +1,31 @@
 package com.fankf.bean;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-@Setter
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
 public class SortObject {
 
     private String sortFiled;
     private Object sortObject;
-    private Class<?> clazz;
 
+    public SortObject() {
+    }
+
+    public SortObject(String sortFiled, Object sortObject) {
+        this.sortObject = sortObject;
+        this.sortFiled = sortFiled;
+    }
+
+    public String getSortFiled() {
+        return sortFiled;
+    }
+
+    public void setSortFiled(String sortFiled) {
+        this.sortFiled = sortFiled;
+    }
+
+    public Object getSortObject() {
+        return sortObject;
+    }
+
+    public void setSortObject(Object sortObject) {
+        this.sortObject = sortObject;
+    }
 }

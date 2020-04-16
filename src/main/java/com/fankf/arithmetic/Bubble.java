@@ -2,30 +2,36 @@ package com.fankf.arithmetic;
 
 import com.fankf.bean.SortObject;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 /**
  * 冒泡排序
  */
 public class Bubble implements Arithmetic {
 
     @Override
-    public void sort(List<SortObject> objects, boolean asc) {
-        for (int i = 0; i < objects.size(); i++) {
-            for (int j = 0; j < objects.size() - 1; j++) {
-                Double sortFiled1 = Double.valueOf(objects.get(j).getSortFiled());
-                Double sortFiled2 = Double.valueOf(objects.get(j + 1).getSortFiled());
+    public void sort(SortObject[] objects, boolean asc) throws NumberFormatException {
+        int k = 0;
+        for (int i = 0; i < objects.length; i++) {
+            for (int j = 0; j < objects.length - 1; j++) {
+                Double sortFiled1 = Double.valueOf(objects[j].getSortFiled());
+                Double sortFiled2 = Double.valueOf(objects[j + 1].getSortFiled());
                 if (asc) {
                     if (sortFiled1 > sortFiled2) {
-                        Collections.swap(objects, j, j + 1);
+                        SortObject sortObject = objects[j];
+                        objects[j] = objects[j + 1];
+                        objects[j + 1] = sortObject;
+                        k++;
                     }
                 } else {
                     if (sortFiled1 < sortFiled2) {
-                        Collections.swap(objects, j, j + 1);
+                        SortObject sortObject = objects[j];
+                        objects[j] = objects[j + 1];
+                        objects[j + 1] = sortObject;
+                        k++;
                     }
                 }
+            }
+            if (k == 0) {
+                break;
             }
         }
     }
