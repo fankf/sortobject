@@ -1,26 +1,19 @@
 package com.fankf.bean;
 
-import com.fankf.enums.ArithmeticEnum;
+import com.fankf.enums.AlgorithmEnum;
+import com.fankf.enums.CompareEnum;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 可扩展对象
+ */
 public class SortObjectList {
-    /*
-     * 是否是顺序排列
-     * true 顺序排列
-     * false 逆序排列
-     */
+
     private boolean asc;
-
-    /*
-     * 排序方法
-     */
-    private ArithmeticEnum method;
-
-    /*
-     * 排序对象组
-     */
+    private AlgorithmEnum method;
+    private CompareEnum compare;
     private List<SortObject> objects;
 
     private SortObjectList() {
@@ -31,7 +24,8 @@ public class SortObjectList {
     public static SortObjectList instance() {
         sortObjects = new SortObjectList();
         sortObjects.asc = false;
-        sortObjects.method = ArithmeticEnum.BubbleSort;
+        sortObjects.compare = CompareEnum.NUM;
+        sortObjects.method = AlgorithmEnum.BubbleSort;
         return sortObjects;
     }
 
@@ -43,12 +37,20 @@ public class SortObjectList {
         this.asc = asc;
     }
 
-    public ArithmeticEnum getMethod() {
+    public AlgorithmEnum getMethod() {
         return method;
     }
 
-    public void setMethod(ArithmeticEnum method) {
+    public void setMethod(AlgorithmEnum method) {
         this.method = method;
+    }
+
+    public CompareEnum getCompare() {
+        return compare;
+    }
+
+    public void setCompare(CompareEnum compare) {
+        this.compare = compare;
     }
 
     public List<SortObject> getObjects() {

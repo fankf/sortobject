@@ -1,5 +1,5 @@
 package com.fankf.enums;
 
-public enum ArithmeticEnum {
+public enum AlgorithmEnum {
     BubbleSort
 }

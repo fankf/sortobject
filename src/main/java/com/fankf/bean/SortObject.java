@@ -1,14 +1,14 @@
 package com.fankf.bean;
 
-public class SortObject {
+public class SortObject<T> {
 
     private String sortFiled;
-    private Object sortObject;
+    private T sortObject;
 
     public SortObject() {
     }
 
-    public SortObject(String sortFiled, Object sortObject) {
+    public SortObject(String sortFiled, T sortObject) {
         this.sortObject = sortObject;
         this.sortFiled = sortFiled;
     }
@@ -21,11 +21,11 @@ public class SortObject {
         this.sortFiled = sortFiled;
     }
 
-    public Object getSortObject() {
+    public T getSortObject() {
         return sortObject;
     }
 
-    public void setSortObject(Object sortObject) {
+    public void setSortObject(T sortObject) {
         this.sortObject = sortObject;
     }
 }
