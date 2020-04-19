@@ -1,5 +1,6 @@
 package com.fankf.enums;
 
 public enum AlgorithmEnum {
-    BubbleSort
+    BubbleSort,
+    SelectionSort
 }

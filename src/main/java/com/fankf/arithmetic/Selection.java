@@ -7,50 +7,50 @@ import com.fankf.utils.StringUtils;
 import java.math.BigDecimal;
 
 /**
- * 冒泡排序
+ * @author fan
+ * @create 2020-04-18 22:41
+ * @description
+ * @see
  */
-public class Bubble extends AbstractAlgorithm {
-
+public class Selection extends AbstractAlgorithm {
     @Override
     public void sort(SortObject[] objects, boolean asc) {
-        super.sort(objects,asc);
+        super.sort(objects, asc);
     }
 
     @Override
     public void sort(SortObject[] objects, boolean asc, CompareEnum compareEnum) {
-        int k = 0;
         if (objects.length == 1) {
             return;
         }
+        int flag;
         for (int i = 0; i < objects.length; i++) {
-            for (int j = 0; j < objects.length - 1; j++) {
+            flag = i;
+            for (int j = i + 1; j < objects.length; j++) {
                 switch (compareEnum) {
                     case ASCII:
-                        String s1 = objects[j].getSortFiled();
-                        String s2 = objects[j + 1].getSortFiled();
+                        String s1 = objects[flag].getSortFiled();
+                        String s2 = objects[j].getSortFiled();
                         if (asc && StringUtils.compareTo(s1, s2) > 0) {
-                            super.swap(objects,j,j + 1);
-                            k++;
+                            flag = j;
                         } else if (!asc && StringUtils.compareTo(s1, s2) < 0) {
-                            super.swap(objects,j,j + 1);
-                            k++;
+                            flag = j;
                         }
+
                     case NUM:
-                        BigDecimal b1 = new BigDecimal(objects[j].getSortFiled());
-                        BigDecimal b2 = new BigDecimal(objects[j + 1].getSortFiled());
+                        BigDecimal b1 = new BigDecimal(objects[flag].getSortFiled());
+                        BigDecimal b2 = new BigDecimal(objects[j].getSortFiled());
                         if (asc && b1.compareTo(b2) > 0) {
-                            super.swap(objects,j,j + 1);
-                            k++;
+                            flag = j;
                         } else if (!asc && b1.compareTo(b2) < 0) {
-                            super.swap(objects,j,j + 1);
-                            k++;
+                            flag = j;
                         }
                 }
+            }
+            super.swap(objects, flag, i);
 
-            }
-            if (k == 0) {
-                break;
-            }
         }
     }
+
 }
+

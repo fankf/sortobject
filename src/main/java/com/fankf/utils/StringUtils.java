@@ -10,7 +10,7 @@ public class StringUtils {
         return false;
     }
 
-    public static int compateTo(String s1, String s2) {
+    public static int compareTo(String s1, String s2) {
         char[] c1 = s1.toCharArray();
         char[] c2 = s2.toCharArray();
         int min = Math.min(s1.length(), c2.length);
