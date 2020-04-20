@@ -31,18 +31,18 @@ public class Selection extends AbstractAlgorithm {
                     case ASCII:
                         String s1 = objects[flag].getSortFiled();
                         String s2 = objects[j].getSortFiled();
-                        if (asc && StringUtils.compareTo(s1, s2) > 0) {
+                        if (asc && StringUtils.compareTo(s1, s2) < 0) {
                             flag = j;
-                        } else if (!asc && StringUtils.compareTo(s1, s2) < 0) {
+                        } else if (!asc && StringUtils.compareTo(s1, s2) > 0) {
                             flag = j;
                         }
 
                     case NUM:
                         BigDecimal b1 = new BigDecimal(objects[flag].getSortFiled());
                         BigDecimal b2 = new BigDecimal(objects[j].getSortFiled());
-                        if (asc && b1.compareTo(b2) > 0) {
+                        if (asc && b1.compareTo(b2) < 0) {
                             flag = j;
-                        } else if (!asc && b1.compareTo(b2) < 0) {
+                        } else if (!asc && b1.compareTo(b2) > 0) {
                             flag = j;
                         }
                 }
