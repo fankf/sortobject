@@ -5,7 +5,8 @@ public class User {
     private String name;
     private String age;
 
-    public User(){}
+    public User() {
+    }
 
     public User(int id, String name, String age) {
         this.id = id;
@@ -35,5 +36,10 @@ public class User {
 
     public void setAge(String age) {
         this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "id: " + id + " name: " + name + " age: " + age;
     }
 }

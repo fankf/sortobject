@@ -4,6 +4,7 @@ import com.fankf.Sort;
 import com.fankf.bean.SortObject;
 import com.fankf.bean.SortObjectList;
 import com.fankf.enums.AlgorithmEnum;
+import com.fankf.enums.CompareEnum;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -12,7 +13,7 @@ import java.util.List;
 public class Test {
     public static void main(String[] args) {
 
-        SortObjectList init = SortObjectList.instance();
+
         User user1 = new User(1, "A1", "14");
         User user2 = new User(2, "A2", "11");
         User user3 = new User(3, "A3", "11");
@@ -30,15 +31,12 @@ public class Test {
         objects.add(su3);
         objects.add(su4);
         objects.add(su5);
-        init.setObjects(objects);
-//        init.setMethod(AlgorithmEnum.BubbleSort);
-//        init.setAsc(false);
+
         long t1 = Calendar.getInstance().getTimeInMillis();
-        List<User> sort = Sort.sort(init, User.class);
+        List<User> sort = Sort.sort(objects, true, AlgorithmEnum.BubbleSort, CompareEnum.NUM, User.class);
         long t2 = Calendar.getInstance().getTimeInMillis();
         System.out.println("执行时间:" + (t2 - t1));
         System.out.println(sort);
 
     }
-
 }

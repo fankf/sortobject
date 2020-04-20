@@ -7,11 +7,10 @@ import com.fankf.bean.SortObject;
 import com.fankf.bean.SortObjectList;
 import com.fankf.enums.AlgorithmEnum;
 import com.fankf.enums.CompareEnum;
-import com.fankf.enums.SortErrorEnum;
-import com.fankf.utils.StringUtils;
 import com.fankf.utils.AlgorithmSelectUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Sort {
@@ -21,24 +20,39 @@ public class Sort {
 
     //all
     public static <T> List<T> sort(List<SortObject> objects, boolean asc, AlgorithmEnum method, CompareEnum compare, Class<T> clazz) {
-
-        Algorithm arithmetic;
-        switch (method) {
-            case BubbleSort:
-                arithmetic = new Bubble();
-                break;
-            case SelectionSort:
-                arithmetic = new Selection();
-                break;
-            default:
-                arithmetic = AlgorithmSelectUtils.getAlgorith(objects);
+        if (objects == null) {
+            return null;
+        } else if (objects.size() == 0) {
+            return null;
+        } else if (objects.size() == 1) {
+            return Arrays.asList((T) objects.get(0).getSortObject());
         }
 
+        if (compare == null) {
+            compare = CompareEnum.NUM;
+        }
+
+        Algorithm arithmetic;
+        if (method == null) {
+            arithmetic = AlgorithmSelectUtils.getAlgorith(objects);
+        } else {
+            switch (method) {
+                case BubbleSort:
+                    arithmetic = new Bubble();
+                    break;
+                case SelectionSort:
+                    arithmetic = new Selection();
+                    break;
+                default:
+                    arithmetic = AlgorithmSelectUtils.getAlgorith(objects);
+            }
+        }
         //转换
         SortObject[] sos = new SortObject[objects.size()];
         for (int i = 0; i < objects.size(); i++) {
             sos[i] = objects.get(i);
         }
+
 
         arithmetic.sort(sos, asc, compare);
 
@@ -48,17 +62,6 @@ public class Sort {
             result.add((T) sortObject.getSortObject());
         }
         return result;
-    }
-
-    private static void check(SortObjectList objectList) throws SortException {
-        //排序字段不能为空
-        List<SortObject> objects = objectList.getObjects();
-        for (SortObject object : objects) {
-            if (StringUtils.isBlank(object.getSortFiled())) {
-                throw new SortException(SortErrorEnum.SORT_ERROR_001);
-            }
-
-        }
     }
 
     //2

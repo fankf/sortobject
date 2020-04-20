@@ -35,6 +35,7 @@ public class Bubble extends AbstractAlgorithm {
                             super.swap(objects,j,j + 1);
                             k++;
                         }
+                        break;
                     case NUM:
                         BigDecimal b1 = new BigDecimal(objects[j].getSortFiled());
                         BigDecimal b2 = new BigDecimal(objects[j + 1].getSortFiled());
@@ -45,6 +46,7 @@ public class Bubble extends AbstractAlgorithm {
                             super.swap(objects,j,j + 1);
                             k++;
                         }
+                        break;
                 }
 
             }

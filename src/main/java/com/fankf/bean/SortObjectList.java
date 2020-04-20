@@ -23,7 +23,7 @@ public class SortObjectList {
 
     public static SortObjectList instance() {
         sortObjects = new SortObjectList();
-        sortObjects.asc = false;
+        sortObjects.asc = true;
         sortObjects.compare = CompareEnum.NUM;
         sortObjects.method = AlgorithmEnum.BubbleSort;
         return sortObjects;
