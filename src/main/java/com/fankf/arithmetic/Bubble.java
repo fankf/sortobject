@@ -7,7 +7,10 @@ import com.fankf.utils.StringUtils;
 import java.math.BigDecimal;
 
 /**
- * 冒泡排序
+ * @author fan
+ * @create 2020-04-18 22:41
+ * @description 冒泡排序
+ * @see AbstractAlgorithm
  */
 public class Bubble extends AbstractAlgorithm {
 

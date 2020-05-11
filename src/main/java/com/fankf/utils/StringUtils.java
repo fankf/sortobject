@@ -3,8 +3,7 @@ package com.fankf.utils;
 public class StringUtils {
 
     public static boolean isBlank(String string) {
-
-        if (string != null && string.trim().length() > 0) {
+        if (string == null && string.trim().length() == 0) {
             return true;
         }
         return false;
@@ -28,5 +27,20 @@ public class StringUtils {
             return 1;
         }
         return 0;
+    }
+
+    private static String upperCaseFirst(String var0) {
+        char[] chars = var0.toCharArray();
+        if (chars[0] >= 'a' && chars[0] <= 'z') {
+            chars[0] = (char) (chars[0] - 32);
+        }
+        return new String(chars);
+    }
+
+    public static String getFiledGetMethed(String filed) {
+        if (isBlank(filed)) {
+            return null;
+        }
+        return "get" + upperCaseFirst(filed);
     }
 }
