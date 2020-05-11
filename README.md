@@ -63,5 +63,27 @@ true 顺序排列，false 倒序排列
 6. 后续排序扩展，单字段分段排序和相同值额外字段排序（待评估）
 
 
-#### 20200511
+#### 20200511 记录
 增加组装数据方式，通过反射获取对象值，之后再次排序
+修改内容：
+*  增加**Sort.sort(List,String,AlgorithmEnum)传参扩展**
+*  删除之前方法的Class clazz 参数
+
+反射排序方法示例：
+```
+    User user1 = new User(1, "A1", "14");
+    User user2 = new User(2, "A2", "11");
+    User user3 = new User(3, "A3", "11");
+    User user4 = new User(4, "A4", "12");
+    User user5 = new User(5, "A5", "18");
+    
+    List<User> users = new ArrayList<>();
+    users.add(user1);
+    users.add(user2);
+    users.add(user3);
+    users.add(user4);
+    users.add(user5);
+    List<User> age = Sort.sort(users, "age", AlgorithmEnum.BubbleSort);
+```
+运行结果：
+> [id: 2 name: A2 age: 11, id: 3 name: A3 age: 11, id: 4 name: A4 age: 12, id: 1 name: A1 age: 14, id: 5 name: A5 age: 18]
